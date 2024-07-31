@@ -7,22 +7,18 @@ import { menuOptions } from "@/src/app/data/menuOptions";
 interface MenuOptionType {
   Title: string;
   Link: string;
-  SubOptions?: MenuOptionType[];
   Description: string;
 }
 
-const MenuOptions = () => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(menuOptions[0]?.Title || null);
+const MenuOptions = ({ startIndex, endIndex }: { startIndex: number, endIndex: number }) => {
+  const [selectedOption, setSelectedOption] = useState<string | null>(menuOptions[startIndex]?.Title || null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  const [currentMenuOptions, setCurrentMenuOptions] = useState<MenuOptionType[]>(menuOptions);
+  const [currentMenuOptions, setCurrentMenuOptions] = useState<MenuOptionType[]>(menuOptions.slice(startIndex, endIndex + 1));
 
-  const handleClick = (title: string, link: string, subOptions?: MenuOptionType[]) => {
+  const handleClick = (title: string, link: string) => {
     if (link) {
+      
       window.location.href = `${link}`;
-    } else if (subOptions && subOptions.length > 0) {
-      setCurrentMenuOptions(subOptions);
-      setSelectedOption(subOptions[0].Title); // Set to the first suboption
-      setSelectedIndex(0); // Reset index to the first suboption
     } else {
       setSelectedOption(title);
     }
@@ -35,7 +31,7 @@ const MenuOptions = () => {
       setSelectedIndex((prevIndex) => (prevIndex - 1 + currentMenuOptions.length) % currentMenuOptions.length);
     } else if (event.key === "Enter" && selectedIndex >= 0) {
       const selectedOption = currentMenuOptions[selectedIndex];
-      handleClick(selectedOption.Title, selectedOption.Link, selectedOption.SubOptions);
+      handleClick(selectedOption.Title, selectedOption.Link);
     }
   };
 
@@ -58,7 +54,7 @@ const MenuOptions = () => {
       {currentMenuOptions.map((option, index) => (
         <div
           key={option.Title}
-          onClick={() => handleClick(option.Title, option.Link, option.SubOptions)}
+          onClick={() => handleClick(option.Title, option.Link)}
           className={`cursor-pointer ${
             selectedIndex === index ? "animate-color-change" : "text-white"
           }`}

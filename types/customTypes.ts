@@ -8,7 +8,6 @@ export type MenuOptionType = {
     Title: string;
     Description: string;
     Link: string;
-    SubOptions?: MenuOptionType[];
 };
 
 type OptionType = {
