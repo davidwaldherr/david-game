@@ -3,47 +3,69 @@
 import { useState, useEffect } from "react";
 import { menuOptions } from "@/src/app/data/menuOptions";
 
+// Define MenuOptionType at the top of the file
+interface MenuOptionType {
+  Title: string;
+  Link: string;
+  SubOptions?: MenuOptionType[];
+  Description: string;
+}
+
 const MenuOptions = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(menuOptions[0]?.Title || null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [currentMenuOptions, setCurrentMenuOptions] = useState<MenuOptionType[]>(menuOptions);
 
-  const handleClick = (title: string) => {
-    setSelectedOption(title);
+  const handleClick = (title: string, link: string, subOptions?: MenuOptionType[]) => {
+    if (link) {
+      window.location.href = `${link}`;
+    } else if (subOptions && subOptions.length > 0) {
+      setCurrentMenuOptions(subOptions);
+      setSelectedOption(subOptions[0].Title); // Set to the first suboption
+      setSelectedIndex(0); // Reset index to the first suboption
+    } else {
+      setSelectedOption(title);
+    }
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === "ArrowDown") {
-      setSelectedIndex((prevIndex) => (prevIndex + 1) % menuOptions.length);
+      setSelectedIndex((prevIndex) => (prevIndex + 1) % currentMenuOptions.length);
     } else if (event.key === "ArrowUp") {
-      setSelectedIndex((prevIndex) => (prevIndex - 1 + menuOptions.length) % menuOptions.length);
+      setSelectedIndex((prevIndex) => (prevIndex - 1 + currentMenuOptions.length) % currentMenuOptions.length);
+    } else if (event.key === "Enter" && selectedIndex >= 0) {
+      const selectedOption = currentMenuOptions[selectedIndex];
+      handleClick(selectedOption.Title, selectedOption.Link, selectedOption.SubOptions);
     }
   };
 
   useEffect(() => {
-    if (selectedIndex >= 0) {
-      setSelectedOption(menuOptions[selectedIndex].Title);
+    if (selectedIndex >= 0 && selectedIndex < currentMenuOptions.length) {
+      setSelectedOption(currentMenuOptions[selectedIndex].Title);
     }
-  }, [selectedIndex]);
+  }, [selectedIndex, currentMenuOptions]);
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
+    const handleKeyEvents = (event: KeyboardEvent) => handleKeyDown(event);
+    window.addEventListener("keydown", handleKeyEvents);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleKeyEvents);
     };
-  }, []);
+  }, [handleKeyDown]);
 
   return (
-    <div>
-      {menuOptions.map((option, index) => (
-        <p
+    <div className="text-4xl">
+      {currentMenuOptions.map((option, index) => (
+        <div
           key={option.Title}
-          onClick={() => handleClick(option.Title)}
+          onClick={() => handleClick(option.Title, option.Link, option.SubOptions)}
           className={`cursor-pointer ${
-            selectedOption === option.Title ? "animate-color-change" : "text-white"
+            selectedIndex === index ? "animate-color-change" : "text-white"
           }`}
+          style={{ textAlign: 'center', width: '100%' }}
         >
           {option.Title}
-        </p>
+        </div>
       ))}
     </div>
   );

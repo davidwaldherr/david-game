@@ -1,4 +1,3 @@
-
 type PageType = {
     Header: string;
     Body: string;
@@ -9,6 +8,7 @@ export type MenuOptionType = {
     Title: string;
     Description: string;
     Link: string;
+    SubOptions?: MenuOptionType[];
 };
 
 type OptionType = {
@@ -16,7 +16,7 @@ type OptionType = {
     Link: string;
 };
 
-type CardType = {
+export type CardType = {
     Title: string;
     Logo: string;
     Category: string;

@@ -56,3 +56,38 @@ body {
   justify-content: center;
   box-sizing: border-box;
 }
+
+.neon-box {
+  animation: neon 2s infinite;
+}
+
+@keyframes neon {
+  0% {
+    box-shadow: 0 0 10px 10px red;
+  }
+  25% {
+    box-shadow: 0 0 10px 10px blue;
+  }
+  50% {
+    box-shadow: 0 0 10px 10px green;
+  }
+  75% {
+    box-shadow: 0 0 10px 10px yellow;
+  }
+  100% {
+    box-shadow: 0 0 10px 10px red;
+  }
+}
+
+.shrink-animation {
+  animation: shrink 1s forwards;
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
