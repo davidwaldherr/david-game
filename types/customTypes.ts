@@ -18,6 +18,8 @@ type OptionType = {
 export type CardType = {
     Title: string;
     Link: string;
+    BackgroundColor: string;
+    ShadowColor: string;
     Logo: string;
     Category: string;
     Type: string;
@@ -26,7 +28,7 @@ export type CardType = {
     BackgroundStory: string;
     Animation: string;
     ColorScheme: string;
-    PixelBorder: string;
+    BorderColor: string;
 };
 
 type StoryScreenType = {

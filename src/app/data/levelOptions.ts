@@ -11,8 +11,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "If you could control your dreams, what would you do?",
     Animation: "Gentle upward float",
     ColorScheme: "Gradient from deep indigo to light lavender",
-    PixelBorder: "rgb(173, 216, 230)",
+    ShadowColor: "rgb(173, 216, 230)", // Changed from PixelBorder
     Link: "https://www.lucid.game",
+    BackgroundColor: "rgb(173, 216, 230)", // Changed from #4B0082
+    BorderColor: "#4B0082", // New property
   },
   {
     Title: "Ultrarunning",
@@ -24,8 +26,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "What motivates you to push beyond your limits?",
     Animation: "Quick, sharp motion",
     ColorScheme: "Gradient from bright orange to deep red",
-    PixelBorder: "rgb(255, 69, 0)",
+    ShadowColor: "rgb(255, 69, 0)", // Changed from PixelBorder
     Link: "/ultrarunning",
+    BackgroundColor: "rgb(255, 69, 0)", // Changed from #FFA500
+    BorderColor: "#FFA500", // New property
   },
   {
     Title: "Memory Palace",
@@ -37,8 +41,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "Unlock the secrets of a powerful memory.",
     Animation: "Smooth transition with subtle motion",
     ColorScheme: "Gradient from dark blue to gold",
-    PixelBorder: "rgb(218, 165, 32)",
+    ShadowColor: "rgb(218, 165, 32)", // Changed from PixelBorder
     Link: "/memory-palace",
+    BackgroundColor: "rgb(218, 165, 32)", // Changed from #00008B
+    BorderColor: "#00008B", // New property
   },
   {
     Title: "Digital Marketing",
@@ -50,8 +56,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "How can advanced AI elevate your SEO strategy?",
     Animation: "Digital glitch effect",
     ColorScheme: "Gradient from dark navy blue to bright teal",
-    PixelBorder: "rgb(70, 130, 180)",
+    ShadowColor: "rgb(70, 130, 180)", // Changed from PixelBorder
     Link: "/digital-marketing",
+    BackgroundColor: "rgb(70, 130, 180)", // Changed from #000080
+    BorderColor: "#000080", // New property
   },
   {
     Title: "College Admissions",
@@ -63,8 +71,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "Achieve your academic dreams with personalized support.",
     Animation: "Book opening effect",
     ColorScheme: "Gradient from maroon to gold",
-    PixelBorder: "rgb(255, 215, 0)",
+    ShadowColor: "rgb(255, 215, 0)", // Changed from PixelBorder
     Link: "https://www.college.game",
+    BackgroundColor: "rgb(255, 215, 0)", // Changed from #800000
+    BorderColor: "#800000", // New property
   },
   {
     Title: "Leads Listing",
@@ -76,8 +86,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "Unlock new business opportunities with our leads listing.",
     Animation: "Sliding pixelation effect",
     ColorScheme: "Gradient from dark green to black",
-    PixelBorder: "rgb(34, 139, 34)",
+    ShadowColor: "rgb(34, 139, 34)", // Changed from PixelBorder
     Link: "https://www.leads.game",
+    BackgroundColor: "rgb(34, 139, 34)", // Changed from #006400
+    BorderColor: "#006400", // New property
   },
   {
     Title: "SEO",
@@ -89,8 +101,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "Achieve digital success with our expert SEO services.",
     Animation: "Quick, sliding pixelation effect",
     ColorScheme: "Gradient from dark blue to silver",
-    PixelBorder: "rgb(192, 192, 192)",
+    ShadowColor: "rgb(192, 192, 192)", // Changed from PixelBorder
     Link: "https://www.seo.game",
+    BackgroundColor: "rgb(192, 192, 192)", // Changed from #00008B
+    BorderColor: "#00008B", // New property
   },
   {
     Title: "Learning",
@@ -102,8 +116,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "Unlock your potential with continuous learning.",
     Animation: "Gentle, flowing motion",
     ColorScheme: "Gradient from light blue to yellow",
-    PixelBorder: "rgb(255, 255, 0)",
+    ShadowColor: "rgb(255, 255, 0)", // Changed from PixelBorder
     Link: "/learning",
+    BackgroundColor: "rgb(255, 255, 0)", // Changed from #ADD8E6
+    BorderColor: "#ADD8E6", // New property
   },
   {
     Title: "Chat with Heroes",
@@ -115,8 +131,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "What would you ask your heroes?",
     Animation: "Subtle, zoom-in motion",
     ColorScheme: "Gradient from gold to blue",
-    PixelBorder: "rgb(255, 215, 0)",
+    ShadowColor: "rgb(255, 215, 0)", // Changed from PixelBorder
     Link: "/chat-with-heroes",
+    BackgroundColor: "rgb(255, 215, 0)", // Changed from #FFD700
+    BorderColor: "#FFD700", // New property
   },
   {
     Title: "X",
@@ -128,8 +146,10 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "Discover and share on X.",
     Animation: "Dynamic slide effect",
     ColorScheme: "Gradient from black to dark grey",
-    PixelBorder: "rgb(105, 105, 105)",
+    ShadowColor: "rgb(105, 105, 105)", // Changed from PixelBorder
     Link: "https://www.x.com",
+    BackgroundColor: "rgb(105, 105, 105)", // Changed from #000000
+    BorderColor: "#000000", // New property
   },
   {
     Title: "LinkedIn",
@@ -141,7 +161,9 @@ export const cardLevels: CardType[] = [
     BackgroundStory: "Enhance your professional presence with LinkedIn.",
     Animation: "Smooth transition effect",
     ColorScheme: "Gradient from light blue to dark blue",
-    PixelBorder: "rgb(70, 130, 180)",
-    Link: "https://www.linkedin.com",
+    ShadowColor: "rgb(70, 130, 180)", // Changed from PixelBorder
+    Link: "https://www.linkedin.com/in/davidwaldherr/",
+    BackgroundColor: "rgb(70, 130, 180)", // Changed from #ADD8E6
+    BorderColor: "#ADD8E6", // New property
   },
 ];

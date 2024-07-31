@@ -5,22 +5,19 @@ import { cardLevels } from '@/src/app/data/levelOptions';
 
 const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number, setCurrentIndex: (index: number) => void }) => {
   const card = cardLevels[currentIndex];
-  const borderColor = card.PixelBorder;
+  const ShadowColor = card.ShadowColor;
+  const borderColor = card.BorderColor;
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowRight') {
         setCurrentIndex((prevIndex: number) => {
           const newIndex = (prevIndex + 1) % cardLevels.length;
-          console.log('New index:', newIndex);
-          console.log('Prev index:', prevIndex);
           return newIndex;
         });
       } else if (event.key === 'ArrowLeft') {
         setCurrentIndex((prevIndex: number) => {
           const newIndex = (prevIndex - 1 + cardLevels.length) % cardLevels.length;
-          console.log('New index:', newIndex);
-          console.log('Prev index:', prevIndex);
           return newIndex;
         });
       }
@@ -34,8 +31,8 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
 
   return (
     <div
-      className="flex flex-col w-full mx-auto stretch relative bg-black items-center shadow-lg pb-5"
-      style={{ height: '90%', width: '90%', maxWidth: '560px', boxShadow: `0 0 10px 10px ${borderColor}`, border: `2px solid ${borderColor}` }}
+      className="flex flex-col w-full mx-auto stretch relative items-center shadow-lg pb-5"
+      style={{ height: '90%', width: '90%', maxWidth: '560px', boxShadow: `0 0 10px 10px ${ShadowColor}`, border: `10px solid ${borderColor}`, backgroundColor: card.BackgroundColor, borderRadius: '15px' }}
     >
       <h1 className="flex pt-10 text-center text-6xl">{card.Title}</h1>
       <button
