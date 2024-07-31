@@ -17,6 +17,7 @@ type OptionType = {
 
 export type CardType = {
     Title: string;
+    Link: string;
     Logo: string;
     Category: string;
     Type: string;

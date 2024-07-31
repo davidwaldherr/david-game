@@ -3,33 +3,18 @@ import { cardLevels } from '@/src/app/data/levelOptions';
 
 const LevelOptions = () => {
   const card = cardLevels[0];
+  const borderColor = card.PixelBorder;
 
   return (
-    <div className="card">
-      <h1>{card.Title}</h1>
-      <img src={card.Logo} alt={`${card.Title} logo`} />
-      <p><strong>Category:</strong> {card.Category}</p>
-      <p><strong>Type:</strong> {card.Type}</p>
-      <p><strong>Description:</strong> {card.Description}</p>
-      <p><strong>Background Story:</strong> {card.BackgroundStory}</p>
-      <p><strong>Animation:</strong> {card.Animation}</p>
-      <p><strong>Color Scheme:</strong> {card.ColorScheme}</p>
-      <p><strong>Pixel Border:</strong> {card.PixelBorder}</p>
-      <div>
-        <h2>Options:</h2>
-        {card.Options.length > 0 ? (
-          <ul>
-            {card.Options.map((option, index) => (
-              <li key={index}>
-                <p><strong>Title:</strong> {option.Title}</p>
-                <p><strong>Link:</strong> {option.Link}</p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No options available</p>
-        )}
-      </div>
+    <div className="flex flex-col w-full mx-auto stretch relative bg-black items-center shadow-lg" 
+         style={{ height: '90%', width: '90%', maxWidth: '560px', boxShadow: `0 0 10px 10px ${borderColor}`, border: `2px solid ${borderColor}` }}>
+      <h1 className="pt-10 text-center text-6xl">{card.Title}</h1>
+      <button 
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" 
+        onClick={() => window.location.href = card.Link}
+      >
+        CLICK
+      </button>
     </div>
   );
 };

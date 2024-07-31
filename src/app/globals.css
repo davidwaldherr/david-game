@@ -33,7 +33,7 @@ body {
 }
 
 @keyframes colorChange {
-  0% { color: rgb(255, 12, 255); }
+   0% { color: rgb(255, 12, 255); }
   33% { color: rgb(33, 33, 246); }
   66% { color: rgb(0, 191, 255); }
   100% { color: rgb(255, 12, 255); }
@@ -58,7 +58,74 @@ body {
 }
 
 .neon-box {
+  height: 200px;
+  width: 300px;
+  position: relative;
   animation: neon 2s infinite;
+}
+
+.neon-box__line {
+  position: absolute;
+  background: rgba(255, 255, 255, 1);
+}
+
+.neon-box__line--top,
+.neon-box__line--bottom {
+  height: 8px;
+  width: 100%;
+}
+
+.neon-box__line--top::before,
+.neon-box__line--top::after,
+.neon-box__line--bottom::before,
+.neon-box__line--bottom::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 1);
+}
+
+.neon-box__line--top {
+  top: -8px;
+}
+
+.neon-box__line--top::before {
+  left: 0;
+  bottom: -8px;
+}
+
+.neon-box__line--top::after {
+  right: 0;
+  bottom: -8px;
+}
+
+.neon-box__line--bottom {
+  bottom: -8px;
+}
+
+.neon-box__line--bottom::before {
+  left: 0;
+  top: -8px;
+}
+
+.neon-box__line--bottom::after {
+  right: 0;
+  top: -8px;
+}
+
+.neon-box__line--left,
+.neon-box__line--right {
+  width: 8px;
+  height: 100%;
+}
+
+.neon-box__line--left {
+  left: -8px;
+}
+
+.neon-box__line--right {
+  right: -8px;
 }
 
 @keyframes neon {
