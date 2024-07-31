@@ -19,7 +19,7 @@ const AnimatedStars = () => {
 
   return (
     <group ref={starsRef}>
-      <Stars radius={1} depth={50} count={5000} factor={4} saturation={0} fade speed={speed} />
+      <Stars radius={1} depth={15} count={500} factor={4} saturation={0} fade speed={speed} />
     </group>
   );
 };

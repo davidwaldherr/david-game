@@ -13,7 +13,7 @@ function Home() {
 
   return (
     <>
-      <div className="relative w-full h-screen">
+      <div className="relative w-full h-screen bg-black">
         {/* <HomeBackground /> */}
         <div className="absolute inset-0 flex items-center justify-center">
         <div className={`flex flex-col w-full pt-10 mx-auto stretch relative bg-black items-center shadow-lg transition-opacity duration-1000 ${textVisible ? 'opacity-100' : 'opacity-0'}`} style={{ height: '90%', width: '90%', maxWidth: '560px', boxShadow: '0 0 10px 10px white' }}>

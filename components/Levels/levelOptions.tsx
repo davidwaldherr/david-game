@@ -11,15 +11,11 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowRight') {
-        setCurrentIndex((prevIndex: number) => {
-          const newIndex = (prevIndex + 1) % cardLevels.length;
-          return newIndex;
-        });
+        const newIndex = (currentIndex + 1) % cardLevels.length;
+        setCurrentIndex(newIndex);
       } else if (event.key === 'ArrowLeft') {
-        setCurrentIndex((prevIndex: number) => {
-          const newIndex = (prevIndex - 1 + cardLevels.length) % cardLevels.length;
-          return newIndex;
-        });
+        const newIndex = (currentIndex - 1 + cardLevels.length) % cardLevels.length;
+        setCurrentIndex(newIndex);
       }
     };
 
