@@ -1,16 +1,45 @@
-import React from 'react';
+'use client'
+
+import React, { useEffect } from 'react';
 import { cardLevels } from '@/src/app/data/levelOptions';
 
-const LevelOptions = () => {
-  const card = cardLevels[0];
+const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number, setCurrentIndex: (index: number) => void }) => {
+  const card = cardLevels[currentIndex];
   const borderColor = card.PixelBorder;
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowRight') {
+        setCurrentIndex((prevIndex: number) => {
+          const newIndex = (prevIndex + 1) % cardLevels.length;
+          console.log('New index:', newIndex);
+          console.log('Prev index:', prevIndex);
+          return newIndex;
+        });
+      } else if (event.key === 'ArrowLeft') {
+        setCurrentIndex((prevIndex: number) => {
+          const newIndex = (prevIndex - 1 + cardLevels.length) % cardLevels.length;
+          console.log('New index:', newIndex);
+          console.log('Prev index:', prevIndex);
+          return newIndex;
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [setCurrentIndex]);
+
   return (
-    <div className="flex flex-col w-full mx-auto stretch relative bg-black items-center shadow-lg" 
-         style={{ height: '90%', width: '90%', maxWidth: '560px', boxShadow: `0 0 10px 10px ${borderColor}`, border: `2px solid ${borderColor}` }}>
-      <h1 className="pt-10 text-center text-6xl">{card.Title}</h1>
-      <button 
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" 
+    <div
+      className="flex flex-col w-full mx-auto stretch relative bg-black items-center shadow-lg pb-5"
+      style={{ height: '90%', width: '90%', maxWidth: '560px', boxShadow: `0 0 10px 10px ${borderColor}`, border: `2px solid ${borderColor}` }}
+    >
+      <h1 className="flex pt-10 text-center text-6xl">{card.Title}</h1>
+      <button
+        className="flex justify-center items-center bottom-0 mb-10 px-8 py-4 bg-blue-500 text-white text-4xl rounded hover:bg-blue-700"
         onClick={() => window.location.href = card.Link}
       >
         CLICK

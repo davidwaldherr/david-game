@@ -17,7 +17,6 @@ const MenuOptions = ({ startIndex, endIndex }: { startIndex: number, endIndex: n
 
   const handleClick = (title: string, link: string) => {
     if (link) {
-      
       window.location.href = `${link}`;
     } else {
       setSelectedOption(title);
