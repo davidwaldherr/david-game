@@ -23,7 +23,7 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [setCurrentIndex]);
+  }, [currentIndex, setCurrentIndex]); // Added currentIndex to the dependency array
 
   return (
     <div
