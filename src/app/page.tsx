@@ -28,7 +28,7 @@ function Home() {
             <h1 className={`text-7xl font-regular mb-8 pt-32 text-white transition-opacity duration-1000 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
               david.game
             </h1>
-            <div className={`text-4xl transition-opacity duration-1000 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`text-4xl borderImageDiv p-10 transition-opacity duration-1000 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
               <MenuOptions startIndex={0} endIndex={0} />
             </div>
           </div>

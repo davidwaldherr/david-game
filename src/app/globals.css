@@ -163,8 +163,8 @@ body {
 .borderImageDiv {
   border: 30px; /* Set the border width */
   border-image-source: url('/borderTest.png');
-  border-image-slice: 21 28 21 24 fill; /* Slicing the image */
+  border-image-slice: 33 39 47 30 fill; /* top | right | bottom | left fill? */
   border-image-width: 30px; /* Width of the border */
   border-image-outset: 0; /* Optional: distance of the border image from the edge */
-  border-image-repeat: stretch; /* Optional: how the image is repeated */
+  border-image-repeat: repeat; /* Optional: how the image is repeated */
 }
