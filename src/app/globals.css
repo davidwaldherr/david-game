@@ -162,7 +162,7 @@ body {
 /* styles.module.css */
 .borderImageDiv {
   border-image-source: url('/borderTest.png');
-  border-image-slice: 33 34 47 30; /* top | right | bottom | left fill? */
+  border-image-slice: 33 34 47 30 fill; /* top | right | bottom | left fill? */
   border-image-width: 30px; /* Width of the border */
   border-image-repeat: repeat; /* Optional: how the image is repeated */
 }

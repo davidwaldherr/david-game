@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { cardLevels } from '@/src/app/data/levelOptions';
 import Image from 'next/image';
+import Home from '@/components/Backgrounds/HomeBackground';
 
 interface cardLevels {
   Title: string;
@@ -27,7 +28,6 @@ interface cardLevels {
 
 const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number, setCurrentIndex: (index: number) => void }) => {
   const card = cardLevels[currentIndex];
-  console.log(card)
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -47,17 +47,18 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
   }, [currentIndex, setCurrentIndex]);
 
   return (
+    <>
+    <div className="flex flex-col w-full mx-auto relative items-center pb-5">
     <div
       className="flex flex-col w-full mx-auto relative items-center pb-5"
       style={{
-        height: '90%',
-        width: '90%',
+        height: '400px',
+        width: '400px',
         maxWidth: '560px',
         borderWidth: card.BorderWidth,
         borderImageSource: card.BorderImageSource,
         borderImageSlice: card.BorderImageSlice,
         borderImageRepeat: card.BorderImageRepeat,
-        // backgroundColor: card.BackgroundColor,
       }}
     >
    <div className="grid place-items-center" style={{ height: '50%' }}>
@@ -67,35 +68,49 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
        className="object-cover w-auto h-auto max-w-full max-h-full"
        width={560}
        height={560}
-       style={{ 
-         maxWidth: '100%', 
-         maxHeight: '100%' 
+       style={{
+        objectFit: 'cover',
+        width: '200%',
+        height: '200%'
        }}
+       priority={true}
+       
      />
    </div>
       <div
-        className="flex justify-center items-center w-full"
+        className="justify-center items-center bg-black"
         style={{
-          borderTop: `3px solid ${card.BorderTopColor}`,
-          borderBottom: `3px solid ${card.BorderBottomColor}`,
+          borderWidth: 15,
+          width: '400px',
+          height: '75px',
+          borderImageSource: card.BorderImageSource,
+          borderImageSlice: card.BorderImageSlice,
+          borderImageRepeat: card.BorderImageRepeat,
+          position: 'absolute',
+          bottom: '0',
+          left: '50%',
+          transform: 'translateX(-50%) translateY(10%)' // Updated to only center horizontally and vertically
         }}
       >
-        <h1 className="text-center text-6xl">{card.Title}</h1>
+        <h1 className="text-center text-4xl">{card.Title}</h1>
       </div>
-      {/* <h1 className="flex w-full text-center items-center text-6xl" style={{ borderTop: `3px solid ${card.BorderTopColor}`, borderBottom: `3px solid ${card.BorderTopColor}` }}>{card.Title}</h1> */}
-      <button
-        className="flex justify-center items-center bottom-0 mb-10 px-8 py-4 text-white text-4xl"
-        style={{
-          borderImageSource: card.BorderImageButton,
-          borderImageSlice: card.BorderImageButtonSlice,
-          borderWidth: card.BorderWidth,
-          borderImageRepeat: card.BorderImageButtonRepeat
-        }}
-        onClick={() => window.location.href = card.Link}
-      >
-        CLICK
-      </button>
     </div>
+          <button
+          className="flex justify-center items-center mt-10 bottom-0 text-white text-4xl"
+          style={{
+            width: '150px',
+            height: '75px',
+            borderImageSource: card.BorderImageButton,
+            borderImageSlice: card.BorderImageButtonSlice,
+            borderWidth: 15,
+            borderImageRepeat: card.BorderImageButtonRepeat
+          }}
+          onClick={() => window.location.href = card.Link}
+        >
+          CLICK
+        </button>
+    </div>
+    </>
   );
 };
 

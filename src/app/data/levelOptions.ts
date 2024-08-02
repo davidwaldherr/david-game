@@ -2,9 +2,9 @@ import { CardType } from "@/types/customTypes";
 
 export const cardLevels: CardType[] = [
   {
-    Title: "LUCID DREAMING",
+    Title: "lucid dreaming",
     Link: "/lucid.game",
-    BackgroundImage: "/lucid/lucid-bg.png",
+    BackgroundImage: "/lucid/lucid-bg.jpg",
     BackgroundColor: "rgb(0, 0, 139)",
 
     BorderWidth: 30,
@@ -12,8 +12,8 @@ export const cardLevels: CardType[] = [
     BorderImageSlice: "33 34 47 30",
     BorderImageRepeat: "repeat",
 
-    BorderImageButton: "url(/lucid/lucid-button.png)",
-    BorderImageButtonSlice: "40 22 45 22 fill",
+    BorderImageButton: "url(/lucid/lucid-border.png)",
+    BorderImageButtonSlice: "33 34 47 30",
     BorderImageButtonRepeat: "stretch",
 
     BorderTopColor: "#f4ce1f",
