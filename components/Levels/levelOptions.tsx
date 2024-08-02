@@ -16,7 +16,6 @@ interface cardLevels {
   BorderImageSource: string;
   BorderImageSlice: string;
   BorderImageRepeat: string;
-
 }
 
 const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number, setCurrentIndex: (index: number) => void }) => {
@@ -35,9 +34,42 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
       }
     };
 
+    const handleTouchStart = (event: TouchEvent) => {
+      const touch = event.touches[0];
+      touchStartX = touch.clientX;
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (!touchStartX) return;
+
+      const touch = event.touches[0];
+      const touchEndX = touch.clientX;
+      const diffX = touchStartX - touchEndX;
+
+      if (Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+          // Swipe left
+          const newIndex = (currentIndex + 1) % cardLevels.length;
+          setCurrentIndex(newIndex);
+        } else {
+          // Swipe right
+          const newIndex = (currentIndex - 1 + cardLevels.length) % cardLevels.length;
+          setCurrentIndex(newIndex);
+        }
+        touchStartX = null;
+      }
+    };
+
+    let touchStartX: number | null = null;
+
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchmove', handleTouchMove);
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
   }, [currentIndex, setCurrentIndex]);
 
