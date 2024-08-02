@@ -3,23 +3,27 @@ import { CardType } from "@/types/customTypes";
 export const cardLevels: CardType[] = [
   {
     Title: "lucid dreaming",
-    Link: "/lucid.game",
+    Link: "/lucid",
     BackgroundImage: "/lucid/lucid-bg.jpg",
     BackgroundColor: "rgb(0, 0, 139)",
 
     BorderWidth: 30,
+    BorderButtonWidth: 15,
     BorderImageSource: "url(/lucid/lucid-border.png)",
     BorderImageSlice: "33 34 47 30",
     BorderImageRepeat: "repeat",
+  },
+  {
+    Title: "bookshelf",
+    Link: "/bookshelf",
+    BackgroundImage: "/bookshelf/bookshelf-bg.jpg",
+    BackgroundColor: "rgb(0, 0, 139)",
 
-    BorderImageButton: "url(/lucid/lucid-border.png)",
-    BorderImageButtonSlice: "33 34 47 30",
-    BorderImageButtonRepeat: "stretch",
-
-    BorderTopColor: "#f4ce1f",
-    BorderBottomColor: "#f4ce1f",
-    BorderTopWidth: 3,
-    BorderBottomWidth: 3,
+    BorderWidth: 30,
+    BorderButtonWidth: 15,
+    BorderImageSource: "url(/bookshelf/bookshelf-border.png)",
+    BorderImageSlice: "30 27 25 26",
+    BorderImageRepeat: "repeat",
   },
 ]
 //   {

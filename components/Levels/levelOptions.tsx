@@ -12,18 +12,11 @@ interface cardLevels {
   BackgroundColor: string;
 
   BorderWidth: 30;
+  BorderButtonWidth: 15;
   BorderImageSource: string;
   BorderImageSlice: string;
   BorderImageRepeat: string;
 
-  BorderImageButton: string;
-  BorderImageButtonSlice: string;
-  BorderImageButtonRepeat: string;
-
-  BorderTopColor: string;
-  BorderBottomColor: string;
-  BorderTopWidth: 3;
-  BorderBottomWidth: 3;
 }
 
 const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number, setCurrentIndex: (index: number) => void }) => {
@@ -37,6 +30,8 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
       } else if (event.key === 'ArrowLeft') {
         const newIndex = (currentIndex - 1 + cardLevels.length) % cardLevels.length;
         setCurrentIndex(newIndex);
+      } else if (event.key === 'Enter') {
+        window.location.href = cardLevels[currentIndex].Link;
       }
     };
 
@@ -80,7 +75,7 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
       <div
         className="justify-center items-center bg-black"
         style={{
-          borderWidth: 15,
+          borderWidth: card.BorderButtonWidth,
           width: '360px',
           height: '75px',
           borderImageSource: card.BorderImageSource,
@@ -101,12 +96,15 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
               style={{
                 width: '100px',
                 height: '75px',
-                borderImageSource: card.BorderImageButton,
-                borderImageSlice: card.BorderImageButtonSlice,
-                borderWidth: 15,
-                borderImageRepeat: card.BorderImageButtonRepeat
+                borderImageSource: card.BorderImageSource,
+                borderImageSlice: card.BorderImageSlice,
+                borderWidth: card.BorderButtonWidth,
+                borderImageRepeat: card.BorderImageRepeat
               }}
-              onClick={() => window.location.href = card.Link}
+              onClick={() => {
+                const newIndex = (currentIndex - 1 + cardLevels.length) % cardLevels.length;
+                setCurrentIndex(newIndex);
+              }}
             >
               ⬅️
             </button>
@@ -115,10 +113,10 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
               style={{
                 width: '150px',
                 height: '75px',
-                borderImageSource: card.BorderImageButton,
-                borderImageSlice: card.BorderImageButtonSlice,
-                borderWidth: 15,
-                borderImageRepeat: card.BorderImageButtonRepeat
+                borderImageSource: card.BorderImageSource,
+                borderImageSlice: card.BorderImageSlice,
+                borderWidth: card.BorderButtonWidth,
+                borderImageRepeat: card.BorderImageRepeat
               }}
               onClick={() => window.location.href = card.Link}
             >
@@ -129,12 +127,15 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
               style={{
                 width: '100px',
                 height: '75px',
-                borderImageSource: card.BorderImageButton,
-                borderImageSlice: card.BorderImageButtonSlice,
-                borderWidth: 15,
-                borderImageRepeat: card.BorderImageButtonRepeat
+                borderImageSource: card.BorderImageSource,
+                borderImageSlice: card.BorderImageSlice,
+                borderWidth: card.BorderButtonWidth,
+                borderImageRepeat: card.BorderImageRepeat
               }}
-              onClick={() => window.location.href = card.Link}
+              onClick={() => {
+                const newIndex = (currentIndex + 1) % cardLevels.length;
+                setCurrentIndex(newIndex);
+              }}
             >
               ➡️
             </button>
