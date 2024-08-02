@@ -52,8 +52,8 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
     <div
       className="flex flex-col w-full mx-auto relative items-center pb-5"
       style={{
-        height: '400px',
-        width: '400px',
+        height: '360px',
+        width: '360px',
         maxWidth: '560px',
         borderWidth: card.BorderWidth,
         borderImageSource: card.BorderImageSource,
@@ -81,7 +81,7 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
         className="justify-center items-center bg-black"
         style={{
           borderWidth: 15,
-          width: '400px',
+          width: '360px',
           height: '75px',
           borderImageSource: card.BorderImageSource,
           borderImageSlice: card.BorderImageSlice,
