@@ -92,23 +92,53 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
           transform: 'translateX(-50%) translateY(10%)' // Updated to only center horizontally and vertically
         }}
       >
-        <h1 className="text-center text-4xl">{card.Title}</h1>
+        <h1 className="text-center text-4xl text-white">{card.Title}</h1>
       </div>
     </div>
-          <button
-          className="flex justify-center items-center mt-10 bottom-0 text-white text-4xl"
-          style={{
-            width: '150px',
-            height: '75px',
-            borderImageSource: card.BorderImageButton,
-            borderImageSlice: card.BorderImageButtonSlice,
-            borderWidth: 15,
-            borderImageRepeat: card.BorderImageButtonRepeat
-          }}
-          onClick={() => window.location.href = card.Link}
-        >
-          CLICK
-        </button>
+          <div className="flex justify-center mt-10">
+            <button
+              className="flex justify-center items-center text-white text-4xl"
+              style={{
+                width: '100px',
+                height: '75px',
+                borderImageSource: card.BorderImageButton,
+                borderImageSlice: card.BorderImageButtonSlice,
+                borderWidth: 15,
+                borderImageRepeat: card.BorderImageButtonRepeat
+              }}
+              onClick={() => window.location.href = card.Link}
+            >
+              ⬅️
+            </button>
+            <button
+              className="flex justify-center items-center text-white text-4xl mx-4"
+              style={{
+                width: '150px',
+                height: '75px',
+                borderImageSource: card.BorderImageButton,
+                borderImageSlice: card.BorderImageButtonSlice,
+                borderWidth: 15,
+                borderImageRepeat: card.BorderImageButtonRepeat
+              }}
+              onClick={() => window.location.href = card.Link}
+            >
+              ENTER
+            </button>
+            <button
+              className="flex justify-center items-center text-white text-4xl"
+              style={{
+                width: '100px',
+                height: '75px',
+                borderImageSource: card.BorderImageButton,
+                borderImageSlice: card.BorderImageButtonSlice,
+                borderWidth: 15,
+                borderImageRepeat: card.BorderImageButtonRepeat
+              }}
+              onClick={() => window.location.href = card.Link}
+            >
+              ➡️
+            </button>
+          </div>
     </div>
     </>
   );
