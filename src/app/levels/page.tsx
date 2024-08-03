@@ -9,9 +9,9 @@ function Levels() {
 
   return (
     <>
-      <div className="relative w-full h-screen bg-black">
+      <div className="relative w-full h-screen bg-black overflow-hidden">
         {/* <HomeBackground /> */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center h-full">
           <LevelOptions currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
         </div>
       </div>

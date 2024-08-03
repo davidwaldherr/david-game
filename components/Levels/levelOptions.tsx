@@ -77,7 +77,7 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
     <>
     <div className="flex flex-col w-full mx-auto relative items-center">
     <div
-      className="flex flex-col w-full mx-auto relative items-center pb-5"
+      className="flex flex-col w-full mx-auto relative items-center"
       style={{
         height: '360px',
         width: '360px',
@@ -123,7 +123,7 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
         <h1 className="text-center text-4xl text-white">{card.Title}</h1>
       </div>
     </div>
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center">
             <button
               className="flex justify-center items-center text-white text-4xl"
               style={{
