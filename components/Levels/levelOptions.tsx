@@ -75,7 +75,7 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
 
   return (
     <>
-    <div className="flex flex-col w-full h-full mx-auto relative items-center">
+    <div className="flex flex-col w-full h-full mx-auto relative items-center" style={{ height: '100vh', overflow: 'hidden' }}>
     <div
       className="flex flex-col w-full h-full mx-auto relative items-center"
       style={{
