@@ -75,12 +75,10 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
 
   return (
     <>
-    <div className="flex flex-col w-full mx-auto relative items-center">
+    <div className="flex flex-col w-full h-full mx-auto relative items-center">
     <div
-      className="flex flex-col w-full mx-auto relative items-center"
+      className="flex flex-col w-full h-full mx-auto relative items-center"
       style={{
-        height: '360px',
-        width: '360px',
         maxWidth: '560px',
         borderWidth: card.BorderWidth,
         borderImageSource: card.BorderImageSource,
