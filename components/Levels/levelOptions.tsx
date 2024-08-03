@@ -76,9 +76,12 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
   return (
     <>
     <div className="flex flex-col w-full h-full mx-auto relative items-center">
+    <div className="w-full" style={{height: '15vh'}}></div>
     <div
       className="flex flex-col w-full h-full mx-auto relative items-center"
       style={{
+        height: '360px',
+        width: '360px',
         maxWidth: '560px',
         borderWidth: card.BorderWidth,
         borderImageSource: card.BorderImageSource,
@@ -86,17 +89,17 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
         borderImageRepeat: card.BorderImageRepeat,
       }}
     >
-   <div className="grid place-items-center" style={{ height: '50%' }}>
+   <div className="grid place-items-center" >
      <Image
        src={card.BackgroundImage}
        alt="Background Image"
        className="object-cover w-auto h-auto max-w-full max-h-full"
-       width={560}
-       height={560}
+       width={360}
+       height={360}
        style={{
         objectFit: 'cover',
-        width: '200%',
-        height: '200%'
+        width: '110%',
+        height: '110%'
        }}
        priority={true}
        
