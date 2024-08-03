@@ -110,7 +110,7 @@ export const cardLevels: CardType[] = [
     BorderImageRepeat: "repeat",
   },
   {
-    Title: "LinkedIn",
+    Title: "linkedin",
     Link: "https://www.linkedin.com/in/davidwaldherr/",
     BackgroundImage: "/linkedin/linkedin-bg.jpg",
     BackgroundColor: "rgb(0, 119, 181)",
