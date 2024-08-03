@@ -76,7 +76,6 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
   return (
     <>
     <div className="flex flex-col w-full h-full mx-auto relative items-center">
-    <div className="w-full" style={{height: '15vh'}}></div>
     <div
       className="flex flex-col w-full h-full mx-auto relative items-center"
       style={{
