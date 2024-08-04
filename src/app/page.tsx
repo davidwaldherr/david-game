@@ -15,10 +15,11 @@ function Home() {
   return (
     <>
       <div className="relative w-full h-screen bg-black">
-        {/* <HomeBackground /> */}
+
+        <HomeBackground />
         <div className="absolute inset-0 flex items-center justify-center">
           <div
-            className={` h-full w-full flex flex-col w-full pt-10 mx-auto stretch relative bg-black items-center shadow-lg transition-opacity duration-1000 ${textVisible ? 'opacity-100' : 'opacity-0'}`}
+            className={` h-full w-full flex flex-col w-full pt-10 mx-auto stretch relative items-center shadow-lg transition-opacity duration-1000 ${textVisible ? 'opacity-100' : 'opacity-0'}`}
             style={{
               maxWidth: '560px',
             }}
