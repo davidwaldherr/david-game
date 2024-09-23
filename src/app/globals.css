@@ -166,3 +166,21 @@ body {
   border-image-width: 30px; /* Width of the border */
   border-image-repeat: repeat; /* Optional: how the image is repeated */
 }
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(270deg, #FF7F50, #1E90FF, #FFD700, #00BFFF);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.animated-gradient2 {
+  background: linear-gradient(90deg, #FF7F50, #1E90FF, #FFD700, #00BFFF);
+  background-size: 400% 400%;
+  animation: gradientAnimation 5s ease infinite;
+}

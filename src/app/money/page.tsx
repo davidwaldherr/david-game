@@ -25,12 +25,9 @@ const financialData = {
     ]
   },
   monthlyExpenses: {
-    total: 30000,
     breakdown: [
-      { category: 'Salaries', amount: 20000 },
-      { category: 'Rent', amount: 5000 },
-      { category: 'Utilities', amount: 3000 },
-      { category: 'Marketing', amount: 2000 },
+      { category: 'Rent', amount: 970 },
+      { category: 'Gas', amount: 50 },
     ]
   },
   totalClients: {
@@ -56,7 +53,7 @@ const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, colu
   return (
     <>
       <Card 
-        className="w-full h-full cursor-pointer transition-all duration-300 hover:scale-105 border-4 border-black rounded-3xl overflow-hidden p-10 bg-gray-100 shadow-lg"
+        className="w-full h-full cursor-pointer transition-all duration-300 hover:scale-105 bg-white border-4 border-black rounded-3xl overflow-hidden p-10 shadow-lg"
         shadow="lg"
         isPressable
         onPress={toggleDetailView}
@@ -70,7 +67,7 @@ const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, colu
       </Card>
 
       {isDetailView && (
-        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-10">
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-10 animated-gradient">
           <Card className="p-10 w-full max-w-4xl h-[90vh] border-4 border-black rounded-3xl overflow-hidden bg-gray-100">
             <CardHeader className="flex justify-between items-center">
               <h2 className="text-2xl font-bold">{title} Breakdown</h2>
@@ -111,7 +108,7 @@ const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, colu
 
 export default function Dashboard() {
   return (
-      <div className="min-h-screen p-8 flex flex-col" style={{ fontFamily: 'Poppins, sans-serif' }}> {/* Add style attribute for font */}
+      <div className="min-h-screen p-8 flex flex-col animated-gradient">
         <div className="flex-grow grid grid-cols-1 lg:grid-cols-2 gap-8">
           <DashboardCard 
             title="Monthly Recurring Revenue" 
@@ -135,7 +132,7 @@ export default function Dashboard() {
           />
           <DashboardCard 
             title="Monthly Expenses" 
-            amount={financialData.monthlyExpenses.total} 
+            amount={financialData.monthlyExpenses.breakdown.reduce((acc, expense) => acc + expense.amount, 0)} 
             currency="$"
             data={financialData.monthlyExpenses.breakdown}
             columns={[
