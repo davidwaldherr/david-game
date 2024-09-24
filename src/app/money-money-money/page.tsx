@@ -13,7 +13,6 @@ const financialData = {
     breakdown: [
       { name: 'The Water Sergeant', subscription: 'Active', mrr: 120, setupFee: 400, startDate: '2024-09-20', endDate: '2025-04-01', totalRevenue: 1120 },
       { name: 'Cambridge Educational Services', subscription: 'Active', mrr: 1000, setupFee: 0, startDate: '2024-09-01', endDate: '2025-06-01', totalRevenue: 9000 },
-
     ]
   },
   monthlyExpenses: {
@@ -75,7 +74,7 @@ const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, colu
         onPress={toggleDetailView}
       >
         <CardBody className="justify-center items-center">
-          <h2 className="text-xl font-bold">{title}</h2>
+          <h2 className="text-xl font-bold text-white">{title}</h2>
           <p className={`text-9xl font-semibold mt-4 ${color === 'red' ? 'text-red-500' : 'text-green-500'}`}>
             {currency}{amount.toLocaleString()}
           </p>
@@ -86,7 +85,7 @@ const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, colu
         <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-10 animated-gradient">
           <Card className="p-10 w-full max-w-4xl h-[90vh] border-4 border-white rounded-3xl overflow-hidden bg-black">
             <CardHeader className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold">{title} Breakdown</h2>
+              <h2 className="text-2xl font-bold text-white">{title} Breakdown</h2>
               <Button color="danger" variant="light" onPress={toggleDetailView} className="text-4xl border-4 border-white rounded-lg p-3 hover:bg-red-500" >
                 🙅‍♂️
               </Button>
@@ -96,14 +95,14 @@ const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, colu
                 <Table>
                   <TableHeader>
                     {columns.map((column) => (
-                      <TableColumn key={column.key}><b>{column.label}</b></TableColumn>
+                      <TableColumn key={column.key}><b className="text-white">{column.label}</b></TableColumn>
                     ))}
                   </TableHeader>
                   <TableBody>
                     {data.map((item, index) => (
                       <TableRow key={index}>
                         {columns.map((column) => (
-                          <TableCell key={column.key} style={{ border: '2px solid white', textAlign: 'center', verticalAlign: 'middle' }}>
+                          <TableCell key={column.key} style={{ border: '2px solid white', textAlign: 'center', verticalAlign: 'middle', color: 'white' }}>
                             {typeof item[column.key] === 'number' 
                               ? `${currency}${item[column.key].toLocaleString()}` 
                               : item[column.key]}
