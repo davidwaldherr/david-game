@@ -9,35 +9,33 @@ import dayjs from 'dayjs'; // For date calculations
 
 // Mock data for demonstration purposes
 const financialData = {
-  mrr: {
-    total: 120
-  },
   totalClients: {
     breakdown: [
       { name: 'The Water Sergeant', subscription: 'Active', mrr: 120, setupFee: 400, startDate: '2024-09-20', endDate: '2025-04-01', totalRevenue: 1120 },
+      { name: 'Cambridge Educational Services', subscription: 'Active', mrr: 1000, setupFee: 0, startDate: '2024-09-01', endDate: '2025-06-01', totalRevenue: 9000 },
+
     ]
   },
   monthlyExpenses: {
     breakdown: [
       { name: 'Rent', cost: 970 },
-      
+
     ]
   }
 
 };
 
-// Helper function to calculate the total profit
-const calculateTotalProfit = (clients: any) => {
-  const today = dayjs();
-  
-  return clients.reduce((total: any, client: any) => {
-    const startDate = dayjs(client.startDate);
-    const monthsActive = today.diff(startDate, 'month');
-    const totalMRR = monthsActive * client.mrr;
-    const totalRevenue = client.setupFee + totalMRR;
-    
-    return total + totalRevenue;
+// Helper function to calculate the total monthly profit
+const calculateTotalMonthlyProfit = (clients: any, expenses: any) => {
+  const totalMRR = clients.reduce((total: any, client: any) => {
+    return total + client.mrr;
   }, 0);
+
+  const totalExpenses = expenses.reduce((total: any, expense: any) => {
+    return total + expense.cost;
+  }, 0);
+
+  return totalMRR - totalExpenses;
 };
 
 // Helper function to calculate projected earnings by January 1, 2025
@@ -60,9 +58,10 @@ type CardData = {
   currency: string;
   data: { [key: string]: string | number }[];
   columns: { key: string, label: string }[];
+  color: string;
 };
 
-const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, columns }) => {
+const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, columns, color }) => {
   const [isDetailView, setIsDetailView] = useState(false);
 
   const toggleDetailView = () => setIsDetailView(!isDetailView);
@@ -77,7 +76,7 @@ const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, colu
       >
         <CardBody className="justify-center items-center">
           <h2 className="text-xl font-bold">{title}</h2>
-          <p className="text-9xl font-semibold mt-4">
+          <p className={`text-9xl font-semibold mt-4 ${color === 'red' ? 'text-red-500' : 'text-green-500'}`}>
             {currency}{amount.toLocaleString()}
           </p>
         </CardBody>
@@ -124,7 +123,7 @@ const DashboardCard: React.FC<CardData> = ({ title, amount, currency, data, colu
 };
 
 export default function Dashboard() {
-  const totalProfit = calculateTotalProfit(financialData.totalClients.breakdown);
+  const monthlyProfit = calculateTotalMonthlyProfit(financialData.totalClients.breakdown, financialData.monthlyExpenses.breakdown);
   const projectedEarnings = calculateProjectedEarnings(financialData.totalClients.breakdown, '2025-01-01');
 
   return (
@@ -143,10 +142,11 @@ export default function Dashboard() {
             { key: 'endDate', label: 'End Date'},
             { key: 'totalRevenue', label: 'Total Revenue' },
           ]}
+          color="green"
         />
         <DashboardCard 
-          title="Total Profit" 
-          amount={totalProfit} 
+          title="Monthly Profit" 
+          amount={monthlyProfit} 
           currency="$"
           data={financialData.totalClients.breakdown}
           columns={[
@@ -157,6 +157,7 @@ export default function Dashboard() {
             { key: 'endDate', label: 'End Date'},
             { key: 'totalRevenue', label: 'Total Revenue' },
           ]}
+          color="green"
         />
         <DashboardCard 
           title="Monthly Expenses" 
@@ -167,6 +168,7 @@ export default function Dashboard() {
             { key: 'name', label: 'Name' },
             { key: 'cost', label: 'Cost' },
           ]}
+          color="red"
         />
         <DashboardCard 
           title="Projected Earnings by Jan 1, 2025" 
@@ -181,6 +183,7 @@ export default function Dashboard() {
             { key: 'endDate', label: 'End Date'},
             { key: 'totalRevenue', label: 'Total Revenue' },
           ]}
+          color="green"
         />
       </div>
     </div>
