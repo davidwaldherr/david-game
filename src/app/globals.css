@@ -184,3 +184,14 @@ body {
   background-size: 400% 400%;
   animation: gradientAnimation 5s ease infinite;
 }
+
+.div-border {
+  border: 2px solid white;
+}
+
+.border-image {
+  border-width: 30px; /* Default border width */
+  border-image-source: url('/lucid/lucid-border.png'); /* Default border image source */
+  border-image-slice: 33 34 47 30 fill; /* Default border image slice */
+  border-image-repeat: repeat; /* Default border image repeat */
+}

@@ -26,7 +26,7 @@ export const cardLevels: CardType[] = [
     BorderImageRepeat: "repeat",
   },
   {
-    Title: "lucid dreaming",
+    Title: "dave^",
     Link: "/lucid",
     BackgroundImage: "/lucid/lucid-bg.jpg",
     BackgroundColor: "rgb(0, 0, 139)",

@@ -74,107 +74,74 @@ const LevelOptions = ({ currentIndex, setCurrentIndex }: { currentIndex: number,
   }, [currentIndex, setCurrentIndex]);
 
   return (
-    <>
     <div className="flex flex-col pt-32 w-full h-full mx-auto relative items-center" style={{ height: '100vh', overflow: 'hidden' }}>
-    <div
-      className="flex flex-col w-full h-full mx-auto relative items-center"
-      style={{
-        height: '360px',
-        width: '360px',
-        maxWidth: '560px',
-        borderWidth: card.BorderWidth,
-        borderImageSource: card.BorderImageSource,
-        borderImageSlice: card.BorderImageSlice,
-        borderImageRepeat: card.BorderImageRepeat,
-      }}
-    >
-   <div className="grid place-items-center" >
-     <Image
-       src={card.BackgroundImage}
-       alt="Background Image"
-       className="object-cover w-auto h-auto max-w-full max-h-full"
-       width={360}
-       height={360}
-       style={{
-        objectFit: 'cover',
-        width: '110%',
-        height: '110%'
-       }}
-       priority={true}
-       
-     />
-   </div>
-      <div
-        className="justify-center items-center"
-        style={{
-          backgroundColor: 'black',
-          borderWidth: card.BorderButtonWidth,
-          width: '360px',
-          height: '75px',
-          borderImageSource: card.BorderImageSource,
-          borderImageSlice: card.BorderImageSlice,
-          borderImageRepeat: card.BorderImageRepeat,
-          position: 'absolute',
-          bottom: '0',
-          left: '50%',
-          transform: 'translateX(-50%) translateY(10%)' // Updated to only center horizontally and vertically
-        }}
-      >
-        <h1 className="text-center text-4xl text-white">{card.Title}</h1>
+        <div className="grid place-items-center border-image" style={{ width: '360px', height: '360px' }}>
+          <Image
+            src={card.BackgroundImage}
+            alt="Background Image"
+            className="object-cover"
+            width={360}
+            height={360}
+            priority={true}
+          />
+        </div>
+        <div
+          className="justify-center items-center border-image"
+          style={{
+            backgroundColor: 'black',
+            borderWidth: card.BorderButtonWidth,
+            width: '360px',
+            height: '75px',
+            position: 'absolute',
+            bottom: '0',
+            left: '50%',
+            transform: 'translateX(-50%) translateY(10%)'
+          }}
+        >
+          <h1 className="text-center text-4xl text-white">{card.Title}</h1>
+        </div>
+      <div className="flex justify-center">
+        <button
+          className="flex justify-center items-center text-white text-4xl border-image"
+          style={{
+            width: '100px',
+            height: '75px',
+            borderWidth: card.BorderButtonWidth,
+          }}
+          onClick={() => {
+            const newIndex = (currentIndex - 1 + cardLevels.length) % cardLevels.length;
+            setCurrentIndex(newIndex);
+          }}
+        >
+          ⬅️
+        </button>
+        <button
+          className="flex justify-center items-center text-white text-4xl mx-4 border-image"
+          style={{
+            width: '150px',
+            height: '75px',
+            borderWidth: card.BorderButtonWidth,
+          }}
+          onClick={() => window.location.href = card.Link}
+        >
+          ENTER
+        </button>
+        <button
+          className="flex justify-center items-center text-white text-4xl border-image"
+          style={{
+            width: '100px',
+            height: '75px',
+            borderWidth: card.BorderButtonWidth,
+          }}
+          onClick={() => {
+            const newIndex = (currentIndex + 1) % cardLevels.length;
+            setCurrentIndex(newIndex);
+          }}
+        >
+          ➡️
+        </button>
       </div>
     </div>
-          <div className="flex justify-center">
-            <button
-              className="flex justify-center items-center text-white text-4xl"
-              style={{
-                width: '100px',
-                height: '75px',
-                borderImageSource: card.BorderImageSource,
-                borderImageSlice: card.BorderImageSlice,
-                borderWidth: card.BorderButtonWidth,
-                borderImageRepeat: card.BorderImageRepeat
-              }}
-              onClick={() => {
-                const newIndex = (currentIndex - 1 + cardLevels.length) % cardLevels.length;
-                setCurrentIndex(newIndex);
-              }}
-            >
-              ⬅️
-            </button>
-            <button
-              className="flex justify-center items-center text-white text-4xl mx-4"
-              style={{
-                width: '150px',
-                height: '75px',
-                borderImageSource: card.BorderImageSource,
-                borderImageSlice: card.BorderImageSlice,
-                borderWidth: card.BorderButtonWidth,
-                borderImageRepeat: card.BorderImageRepeat
-              }}
-              onClick={() => window.location.href = card.Link}
-            >
-              ENTER
-            </button>
-            <button
-              className="flex justify-center items-center text-white text-4xl"
-              style={{
-                width: '100px',
-                height: '75px',
-                borderImageSource: card.BorderImageSource,
-                borderImageSlice: card.BorderImageSlice,
-                borderWidth: card.BorderButtonWidth,
-                borderImageRepeat: card.BorderImageRepeat
-              }}
-              onClick={() => {
-                const newIndex = (currentIndex + 1) % cardLevels.length;
-                setCurrentIndex(newIndex);
-              }}
-            >
-              ➡️
-            </button>
-          </div>
-    </div>
-    </>
   );
 };
 
