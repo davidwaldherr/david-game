@@ -121,4 +121,16 @@ export const cardLevels: CardType[] = [
     BorderImageSlice: "33 34 47 30",
     BorderImageRepeat: "repeat",
   },
+  {
+    Title: "One Word Stories",
+    Link: "/one-word-stories",
+    BackgroundImage: "/one-word-stories/one-word-stories-bg.jpg",
+    BackgroundColor: "rgb(255, 0, 0)",
+
+    BorderWidth: 30,
+    BorderButtonWidth: 15,
+    BorderImageSource: "url(/linkedin/linkedin-border.png)",
+    BorderImageSlice: "33 34 47 30",
+    BorderImageRepeat: "repeat",
+  },
 ]

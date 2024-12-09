@@ -28,7 +28,17 @@ function Home() {
               david.game
             </h1>
             <div className={`text-4xl transition-opacity duration-1000 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
-              <MenuOptions startIndex={0} endIndex={0} />
+              <div className="flex justify-center">
+                <div className="mr-4">
+                  <MenuOptions startIndex={0} endIndex={0} />
+                </div>
+                <div className="mr-4">
+                  <MenuOptions startIndex={1} endIndex={1} />
+                </div>
+                <div className="ml-4">
+                  <MenuOptions startIndex={2} endIndex={2} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

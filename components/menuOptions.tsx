@@ -10,7 +10,14 @@ interface MenuOptionType {
   Description: string;
 }
 
-const MenuOptions = ({ startIndex, endIndex }: { startIndex: number, endIndex: number }) => {
+// Add style to the props interface
+interface MenuOptionsProps {
+  startIndex: number;
+  endIndex: number;
+  style?: React.CSSProperties;  // Make it optional with ?
+}
+
+const MenuOptions: React.FC<MenuOptionsProps> = ({ startIndex, endIndex, style }) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(menuOptions[startIndex]?.Title || null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [currentMenuOptions, setCurrentMenuOptions] = useState<MenuOptionType[]>(menuOptions.slice(startIndex, endIndex + 1));
