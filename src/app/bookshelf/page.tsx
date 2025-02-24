@@ -39,19 +39,23 @@ const AnimatedStars = () => {
 };
 
 const HomeBackground = () => {
-  let interval: NodeJS.Timeout;
+  const intervalRef = useRef<NodeJS.Timeout>();
   
   const story = `Reframing every webpage on your site as an advertisement fundamentally shifts the design, tone, and function of your website. This strategy moves beyond the traditional role of web pages as static informational hubs and transforms them into dynamic sales tools designed to capture attention, build trust, and drive action.`;
   const [currentWordIndex, setCurrentWordIndex] = useState(0); // Index for the current word
   const [wpm, setWpm] = useState(0); // State to hold words per minute
 
   useEffect(() => {
-    interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
         setCurrentWordIndex((prevIndex) => (prevIndex + 1) % story.split(" ").length); // Cycle through words
         setWpm((prevWpm: number) => Math.round((prevWpm + 120) / 2)); // Update WPM
     }, 200); // Change word every 0.2 seconds for 300 WPM -- 60 WPM is 1 word per second 
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
   return (

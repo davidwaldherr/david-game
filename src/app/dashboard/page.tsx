@@ -52,21 +52,32 @@ const Cube = ({ color, index, isHovered }: { color: string; index: number; isHov
     z: 0
   }), []);
 
+  // Load texture outside of the material creation
+  const texture = useLoader(TextureLoader, faceTextures[index]);
+
   // Create a single material for all faces
   const material = useMemo(() => {
     try {
-      const texturePath = faceTextures[index];
-      const loadedTexture = useLoader(TextureLoader, texturePath);
+      console.log(`Setting up material for cube ${index}`);
+      
+      if (texture) {
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+      }
+
       return new THREE.MeshStandardMaterial({
         color: color,
-        map: loadedTexture,
+        map: texture,
         transparent: true,
         opacity: 0.9,
         emissive: color,
-        emissiveIntensity: 0.1
+        emissiveIntensity: 0.1,
+        side: THREE.DoubleSide
       });
     } catch (error) {
-      console.error('Error loading texture:', error);
+      console.error(`Error creating material for cube ${index}:`, error);
       return new THREE.MeshStandardMaterial({
         color: color,
         transparent: true,
@@ -75,7 +86,7 @@ const Cube = ({ color, index, isHovered }: { color: string; index: number; isHov
         emissiveIntensity: 0.1
       });
     }
-  }, [index, color]);
+  }, [color, texture, index]);
 
   useFrame((state, delta) => {
     if (meshRef.current) {

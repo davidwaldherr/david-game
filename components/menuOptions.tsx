@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { menuOptions } from "@/src/app/data/menuOptions";
 
 // Define MenuOptionType at the top of the file
@@ -30,7 +30,7 @@ const MenuOptions: React.FC<MenuOptionsProps> = ({ startIndex, endIndex, style }
     }
   };
 
-  const handleKeyDown = (event: KeyboardEvent) => {
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (event.key === "ArrowDown") {
       setSelectedIndex((prevIndex) => (prevIndex + 1) % currentMenuOptions.length);
     } else if (event.key === "ArrowUp") {
@@ -39,7 +39,7 @@ const MenuOptions: React.FC<MenuOptionsProps> = ({ startIndex, endIndex, style }
       const selectedOption = currentMenuOptions[selectedIndex];
       handleClick(selectedOption.Title, selectedOption.Link);
     }
-  };
+  }, [currentMenuOptions, handleClick]);
 
   useEffect(() => {
     if (selectedIndex >= 0 && selectedIndex < currentMenuOptions.length) {
