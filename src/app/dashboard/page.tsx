@@ -112,7 +112,7 @@ const Cube = ({ color, index, isHovered }: { color: string; index: number; isHov
         rotation={[defaultRotation.x, defaultRotation.y, defaultRotation.z]}
         material={material}
       >
-        <boxGeometry args={[2, 2, 2]} />
+        <boxGeometry args={[1.5, 1.5, 1.5]} />
       </mesh>
     </>
   );
