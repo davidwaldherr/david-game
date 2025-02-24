@@ -40,10 +40,11 @@ const HOVER_SPEED_MULTIPLIER = 5;
 const Cube = ({ color, index, isHovered }: { color: string; index: number; isHovered: boolean }) => {
   const meshRef = useRef<Mesh>(null);
   
+  // Fixed light position from bottom right
   const lightPosition = useMemo(() => ({
-    x: (Math.random() - 0.5) * 10,
-    y: (Math.random() - 0.5) * 10,
-    z: 5 + Math.random() * 5
+    x: 5,  // Positive X for right
+    y: -5, // Negative Y for bottom
+    z: 5   // Positive Z for coming towards viewer
   }), []);
 
   const defaultRotation = useMemo(() => ({
@@ -101,10 +102,10 @@ const Cube = ({ color, index, isHovered }: { color: string; index: number; isHov
 
   return (
     <>
-      <ambientLight intensity={1.0} />
+      <ambientLight intensity={0.8} />
       <directionalLight 
         position={[lightPosition.x, lightPosition.y, lightPosition.z]} 
-        intensity={1.8}
+        intensity={3}
       />
       <mesh 
         ref={meshRef}
