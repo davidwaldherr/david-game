@@ -9,15 +9,15 @@ import { TextureLoader } from 'three';
 import * as THREE from 'three';
 
 const colors = [
-  '#FF6B6B', // coral red
-  '#4ECDC4', // turquoise
-  '#45B7D1', // sky blue
-  '#96CEB4', // sage green
-  '#FFEEAD', // cream yellow
-  '#D4A5A5', // dusty rose
-  '#9B59B6', // purple
-  '#3498DB', // blue
-  '#E67E22', // orange
+  '#FFFFFF', // white
+  '#FFFFFF', // white
+  '#FFFFFF', // white
+  '#FFFFFF', // white
+  '#FFFFFF', // white
+  '#FFFFFF', // white
+  '#FFFFFF', // white
+  '#FFFFFF', // white
+  '#FFFFFF', // white
 ];
 
 // Import all 9 face textures in grid order
@@ -58,8 +58,6 @@ const Cube = ({ color, index, isHovered }: { color: string; index: number; isHov
   // Create a single material for all faces
   const material = useMemo(() => {
     try {
-      console.log(`Setting up material for cube ${index}`);
-      
       if (texture) {
         texture.minFilter = THREE.LinearFilter;
         texture.magFilter = THREE.LinearFilter;
@@ -68,25 +66,20 @@ const Cube = ({ color, index, isHovered }: { color: string; index: number; isHov
       }
 
       return new THREE.MeshStandardMaterial({
-        color: color,
         map: texture,
         transparent: true,
-        opacity: 0.9,
-        emissive: color,
-        emissiveIntensity: 0.1,
-        side: THREE.DoubleSide
+        opacity: 1, // Full opacity
+        color: 0xffffff, // White color to show image true colors
       });
     } catch (error) {
       console.error(`Error creating material for cube ${index}:`, error);
       return new THREE.MeshStandardMaterial({
-        color: color,
+        color: 0xffffff,
         transparent: true,
-        opacity: 0.9,
-        emissive: color,
-        emissiveIntensity: 0.1
+        opacity: 1
       });
     }
-  }, [color, texture, index]);
+  }, [texture, index]);
 
   useFrame((state, delta) => {
     if (meshRef.current) {
@@ -108,10 +101,10 @@ const Cube = ({ color, index, isHovered }: { color: string; index: number; isHov
 
   return (
     <>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1.0} />
       <directionalLight 
         position={[lightPosition.x, lightPosition.y, lightPosition.z]} 
-        intensity={1} 
+        intensity={1.8}
       />
       <mesh 
         ref={meshRef}
@@ -132,6 +125,14 @@ const DashboardIcon = ({ label, color, index }: { label: string; color: string; 
       window.open('https://centaurseo.com', '_blank');
     } else if (index === 1) { // Second cube (face2)
       window.location.href = '/dashboard/strava';
+    } else if (index === 2) { // Third cube (face3)
+      window.open('https://actuallyflying.com', '_blank');
+    } else if (index === 3) { // Fourth cube (face4)
+      window.open('https://thewatersergeant.com', '_blank');
+    } else if (index === 4) { // Fifth cube (face5)
+      window.open('https://amoreepicquest.com', '_blank');
+    } else if (index === 5) { // Sixth cube (face6)
+      window.open('https://sales-leads-chi.vercel.app', '_blank');
     }
   };
 
