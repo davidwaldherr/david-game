@@ -134,6 +134,12 @@ const DashboardIcon = ({ label, color, index }: { label: string; color: string; 
       window.open('https://amoreepicquest.com', '_blank');
     } else if (index === 5) { // Sixth cube (face6)
       window.open('https://sales-leads-chi.vercel.app', '_blank');
+    } else if (index === 6) { // Seventh cube (face7)
+      window.open('https://your-link-for-face7.com', '_blank');
+    } else if (index === 7) { // Eighth cube (face8)
+      window.open('https://perplexity.ai', '_blank');
+    } else if (index === 8) { // Ninth cube (face9)
+      window.open('https://your-link-for-face9.com', '_blank');
     }
   };
 
